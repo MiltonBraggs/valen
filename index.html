@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leaf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: pink;
+            padding:0px;
+            overflow: hidden;
+            margin:0 0 ;
+            display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    height: 100vh;            /* Full height of the viewport */
+    margin: 0;    
+        }
+        .hidden { display: none; }
+
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            
+        }
+        button:hover {
+            background-color: darkred;
+        }
+
+        .watermelon {
+            width: 100px;
+            position: absolute;
+            animation: randomBounce 3s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes randomBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+
+        .wrapper{
+            background-color: rgba(124, 41, 124, 0.608);
+            max-width: 500px;
+            align-items: center;
+            padding: 50px;
+            border-radius: 10px;
+            margin: 0 25px;
+            background-color: rgba(173, 216, 230, 0.951);
+        }
+    </style>
+</head>
+<body>
+    <div class="watermelons"></div>  
+
+    <div class="wrapper">
+    <div id="passwordPage">
+        <h2>Enter the secret password:</h2>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="errorMessage" style="color: red; display: none;">Incorrect password. Try again.</p>
+    </div>
+
+    <div id="proposalPage" class="hidden">
+        <h1>Daph,</h1>
+        <h2>Will you be my Valentine?</h2>
+        <button onclick="goToFinalPage()">Yes</button>
+        <button onclick="goToFinalPage()">Yes</button>
+    </div>
+
+    <div id="finalPage" class="hidden">
+        <h2>Awwwww! I KNEW YOU WOULD SAY YES</h2>
+        <p><strong>Date:</strong> February 15, 2025</p>
+        <p><strong>Time:</strong> After your college?</p>
+        <p><strong>Location:</strong> Metanoia</p>
+        <p>I leaf you soo much❤️☘️</p>
+    </div>
+</div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'iloveyou') {
+                document.getElementById('passwordPage').classList.add('hidden');
+                document.getElementById('proposalPage').classList.remove('hidden');
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        }
+
+        function goToFinalPage() {
+            document.getElementById('proposalPage').classList.add('hidden');
+            document.getElementById('finalPage').classList.remove('hidden');
+        }
+
+        function createWatermelons() {
+            const watermelonContainer = document.querySelector('.watermelons');
+            for (let i = 0; i < 50; i++) {
+                let watermelon = document.createElement('img');
+                watermelon.src = 'watermelon1.svg';
+                watermelon.classList.add('watermelon');
+                watermelon.style.left = Math.random() * 100 + 'vw';
+                watermelon.style.top = Math.random() * 100 + 'vh';
+                watermelon.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                watermelonContainer.appendChild(watermelon);
+            }
+        }
+        
+        createWatermelons();
+    </script>
+</body>
+</html>
