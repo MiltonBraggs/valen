@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>leaf</title>
     <style>
-        html{
-            overflow: hidden;
-        }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -16,12 +13,11 @@
             overflow: hidden;
             margin:0 0 ;
             display: flex;
-            justify-content: center;  /* Center horizontally */
-            align-items: center;      /* Center vertically */
-            height: 100vh;            /* Full height of the viewport */
-            margin: 0;    
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    height: 100vh;            /* Full height of the viewport */
+    margin: 0;    
         }
-
         .hidden { display: none; }
 
         button {
@@ -38,12 +34,6 @@
         button:hover {
             background-color: darkred;
         }
-        .watermelons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
 
         .watermelon {
             width: 100px;
@@ -59,8 +49,7 @@
 
         .wrapper{
             background-color: rgba(124, 41, 124, 0.608);
-            overflow: hidden;
-            max-width: 500px;
+            width: 200px;
             align-items: center;
             padding: 50px;
             border-radius: 10px;
@@ -84,7 +73,7 @@
         <h1>Daph,</h1>
         <h2>Will you be my Valentine?</h2>
         <button onclick="goToFinalPage()">Yes</button>
-        <button onclick="goToFinalPage()">Yes</button>
+        <button id="text" onclick="changeText()">No</button>
     </div>
 
     <div id="finalPage" class="hidden">
@@ -105,6 +94,15 @@
             } else {
                 document.getElementById('errorMessage').style.display = 'block';
             }
+        }
+
+        function changeText(){
+            var text = document.getElementById('text');
+            if(text.innerHTML == 'No'){
+                text.innerHTML = 'YES!!!';}
+                else{
+                    goToFinalPage();
+                }
         }
 
         function goToFinalPage() {
